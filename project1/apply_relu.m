@@ -1,8 +1,10 @@
 function outarray = apply_relu(inarray)
-%inarray is NxMxD array of floats
-%outarray is NxMxD array of floats
+% Input: inarray is NxMxD array of floats
+%
+% Output: outarray is NxMxD array of floats
+%
+% Sets negative elements of inarray to 0 in outarray.
 
-%outarray sets negative elements of inarray to 0
 outarray = inarray;
 outarray(outarray < 0) = 0;
 

@@ -1,8 +1,13 @@
 function outarray = apply_convolve(inarray,filterbank,biasvals)
-%inarray is float NxMxD1
-%filterbank is float RxCxD1xD2
-%biasvals is a float vector of length D2
-%outarray is float NxMxD2
+% Inputs: inarray is float NxMxD1
+%         filterbank is float RxCxD1xD2
+%         biasvals is a float vector of length D2
+%
+% Outputs: outarray is float NxMxD2
+%
+% Individually applies D2 filters to inarray, combines the channels into
+% one channel, and adjusts the result by the corresponding biasval.
+
 N = size(inarray,1);
 M = size(inarray,2);
 D1 = size(inarray,3);

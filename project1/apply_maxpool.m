@@ -1,6 +1,13 @@
 function outarray = apply_maxpool(inarray)
-%inarray is size 2Nx2MxD of floats. 2N and 2M are assumed to be even numbers 
-%outarray is size NxMxD of floats
+% Input: inarray is size 2Nx2MxD of floats (2N and 2M are assumed to be even
+%           numbers).
+%
+% Output: outarray is size NxMxD of floats
+%
+% Reduces the spatial size of inarray by producing an output having only
+% half the number of rows and columns for the spatial dimensions. For each
+% channel of inarray, assigns new values of outarray as max value per 2x2
+% block.
 
 N = int16(size(inarray,1)/2);
 M = int16(size(inarray,2)/2);

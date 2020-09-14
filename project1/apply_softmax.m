@@ -1,6 +1,9 @@
 function outarray = apply_softmax(inarray)
-%inarray is float 1x1xD
-%outarray is float 1x1xD
+% Input: inarray is float 1x1xD
+%
+% Output: outarray is float 1x1xD
+%
+% Scales the scalars from inarray to lie between 0 and 1.
 
 alpha = max(inarray);
 
