@@ -11,7 +11,7 @@ outarray = zeros(N,M,D);
 for i=1:1:M
     for j=1:1:N
         for k=1:1:D
-            %get max of 2x2 pixel block starting at index (2*i,2*j) in
+            %get max of 2x2 pixel block starting at index (2*i-1,2*j-1) in
             %kth channel of inarray. The '[]' in input arguments
             %is necessary for 'max' function to take max over entire 2x2
             %block.
