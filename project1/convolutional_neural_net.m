@@ -14,7 +14,7 @@ load 'data_files/CNNparameters.mat' biasvectors filterbanks layertypes;
 
 
 for i = 1:length(layertypes)
-    switch layertypes(i)
+    switch layertypes{i}
         case 'imnormalize'
             im = apply_imnormalize(im);
         case 'relu'
