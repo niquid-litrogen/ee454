@@ -19,7 +19,7 @@ end
 
 confusion_matrix = guessmatrix(1, prob, trueclass);
 guess_matrices = zeros(10,10,10);
-guess_matricies(:, :, 1) = confusion_matrix;
+guess_matrices(:, :, 1) = confusion_matrix;
 
 for k=2:10
     guess_matrices(:,:,k) = guessmatrix(k, prob, trueclass);
