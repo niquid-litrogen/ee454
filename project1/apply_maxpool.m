@@ -15,15 +15,10 @@ D = size(inarray,3);
 
 outarray = zeros(N,M,D);
 
-for i=1:1:M
-    for j=1:1:N
-        for k=1:1:D
-            %get max of 2x2 pixel block starting at index (2*i-1,2*j-1) in
-            %kth channel of inarray. The '[]' in input arguments
-            %is necessary for 'max' function to take max over entire 2x2
-            %block.
-            outarray(i,j,k) = max(inarray(2*i-1:2*i,2*j-1:2*j,k),[],'all');
-        end
-    end
+for i=1:D
+    pos1 = inarray(1:2:end, 1:2:end, i);
+    pos2 = inarray(2:2:end, 1:2:end, i);
+    pos3 = inarray(1:2:end, 2:2:end, i);
+    pos4 = inarray(2:2:end, 2:2:end, i);
+    outarray(:,:,i) = max(pos1, max(pos2, max(pos3, pos4)));
 end
-
