@@ -5,8 +5,8 @@
 %Layers with incorrect outputs are displayed in the command window. If all
 %layers provide correct outputs, no messages are displayed. 
 
-load 'CNNparameters.mat';
-load 'debuggingTest.mat';
+load 'data_files/CNNparameters.mat';
+load 'data_files/debuggingTest.mat';
 
 num_layers = length(layertypes);
 
