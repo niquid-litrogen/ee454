@@ -4,11 +4,10 @@ function accurate = guessaccuracy(guess_matrix)
     for i=1:size(guess_matrix, 1)
         for j=1:size(guess_matrix, 2)
             if(j == i)
-                total = total + guess_matrix(i, j);
-            else
                 success = success + guess_matrix(i, j);
             end
+            total = total + guess_matrix(i, j);
         end
     end
-    accurate = total/success;
+    accurate = success/total;
 end
