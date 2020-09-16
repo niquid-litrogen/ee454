@@ -45,8 +45,7 @@ for i = 1:1:num_layers
     
         case 'softmax'
             testin = layerResults{i-1};
-            testout = apply_softmax(testin);
-      
+            testout = apply_softmax(testin);  
     end
     
     %check thresholded absolute difference due to float precision effects from
@@ -56,6 +55,7 @@ for i = 1:1:num_layers
     else
         disp(sprintf('layer %d succeeded', i));
     end
+    
 end
 
 %TEST 2:
