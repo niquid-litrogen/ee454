@@ -4,7 +4,7 @@
 %load pretrained model parameters
 load 'data_files/CNNparameters.mat'
 
-%Extract first filters from first conv layer
+%Extract filters from first conv layer
 filts = filterbanks{2};
 
 %Display each of 10 filters in a separate cell of a 2x5 image.
@@ -16,7 +16,6 @@ for i = 1:10
     %Reference: https://www.mathworks.com/help/images/ref/truesize.html
     imshow(filt_rgb,'Initialmagnification','fit');
     title(sprintf('filter %d',i));
-
 end
 
 sgtitle("RGB Filters in First Convolution Layer of CNN");
