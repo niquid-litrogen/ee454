@@ -1,8 +1,11 @@
-## EE 454 Project 1.
+## EE 454 Project 1
 ### Team Members:
 Benjamin Cheng
+
 Luke Garrett
+
 Alan Kwong
+
 Joshua Morgan
 
 **To run the demo, simply run:** `demo_fast.m`
