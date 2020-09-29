@@ -8,7 +8,9 @@ Alan Kwong
 
 Joshua Morgan
 
-**To run the demo, simply run:** `demo_fast.m`
+The layers for the CNN are stored in the “layers” subfolder within the project files. When running MATLAB, it’s important to **add all subfolders to the current path**. Alternatively, pull the layers out of the “layers” folder and place them in the same directory as the rest of the code. 
+
+To run the demo, simply run: `demo_fast.m`
 
 The project has 2 demo options: `demo_fast.m` and `demo_full.m` 
 
