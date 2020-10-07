@@ -2,11 +2,11 @@ load 'data_files/CNNparameters.mat' biasvectors filterbanks layertypes;
 load 'data_files/cifar10testdata.mat'
 
 %pick an arbitrary image to observe intermediate results for
-im_idx = 1;
+im_idx = round(10000*rand);
 
 %pick an arbitrary layer to show results for (be careful that this doesn't
 %cause any problems for certain layers). I recommend not doing this for the
-%fully connected and soft max outputs, because those are less interpertable
+%fully connected and soft max outputs, because those are less interpretable
 %as images. It will actually be most interesting to observe images at the
 %output of layer 2, because further down the line they get less
 %interpretable, and a lot smaller. For example, it would be neat to take a
@@ -21,6 +21,7 @@ layer_num = 2;
 display_channel = 8;
 
 im = imageset(:,:,:,im_idx); 
+orig_im = im;
 
 for i = 1:layer_num
     switch layertypes{i}
@@ -38,7 +39,21 @@ for i = 1:layer_num
             probabilities = apply_softmax(im);
     end
 end
+f1 = figure(1);
+imagesc(orig_im);
+%scale display size so the image does not look overly big.
+truesize(gcf,[size(orig_im,1) * 6 ,size(orig_im,2) * 6]);
+title(['Random Original Image (#' num2str(im_idx) ')']);
+%Position image off to the side
+movegui(f1, [50, 400]);
 
+f2 = figure(2);
 imagesc(im(:,:,display_channel));
 %scale display size so the image does not look overly big.
-truesize(gcf,[size(im,1) * 2,size(im,2) * 2]);
+truesize(gcf,[size(im,1) * 6,size(im,2) * 6]);
+title({['Intermediate Result:'], ['Layer '  num2str(layer_num) ', Display Channel ' num2str(display_channel)]});
+%Position image off to the side
+movegui(f2, [50, 50]);
+
+
+

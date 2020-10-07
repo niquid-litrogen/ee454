@@ -8,6 +8,7 @@ load 'data_files/CNNparameters.mat'
 filts = filterbanks{2};
 
 %Display each of 10 filters in a separate cell of a 2x5 image.
+fig = figure;
 for i = 1:10
     filt_rgb = filts(:,:,:,i);
     subplot(2,5,i);
@@ -19,3 +20,4 @@ for i = 1:10
 end
 
 sgtitle("RGB Filters in First Convolution Layer of CNN");
+movegui(fig, [700, 50]);
