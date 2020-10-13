@@ -4,7 +4,7 @@
 %Note that, in project description, we are allowed to ignore frames that do
 %not have values of all 1 in the confidence score. When inputting your own frame number, this demo may not work 
 %if you use a frame that does not contain data for all 12 joints. In a full demo, simply discard frames that do not have all joints.
-mocapFnum = 15000; %It is assumed that this frame contains data for all 12 joints2
+mocapFnum = 15000; %It is assumed that this frame contains data for all 12 joints
 
 %Load data
 
@@ -23,9 +23,6 @@ load('data_files\Vue4CalibInfo.mat'); %contains 'vue4' structure
 %Extract 3D point data for test frame. "squeeze" removes the outer
 %dimension of size 1, leaving a 2D array.
 points_3D = squeeze(mocapJoints(mocapFnum,:,:));
-%Index identifying which points to pass to projection function. These
-%points have a confidence score of '1'.
-%in_frame = points_3D(:,4) == 1;
 
 subplot(1,2,1);
 
