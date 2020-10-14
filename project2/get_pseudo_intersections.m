@@ -29,7 +29,6 @@ for i = 1:1:num_points
     %perpendicular segment (this is the same as given in slide 18 in
     %lecture 15).
     A = [u1,-u2,u3];
-    disp(A);
     %entry 1 contains length of view ray 1, entry 2 contains length of view
     %ray 2, and entry 3 contains length of perpendicular segment
     ray_lengths = A\(cam2_loc-cam1_loc)'; 
