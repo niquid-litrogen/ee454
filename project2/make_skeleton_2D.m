@@ -11,7 +11,7 @@ function [skel_x,skel_y] = make_skeleton_2D(joints_2D)
 %    joints_2D: numpy array of shape (2, 12). First row contains x
 %               coordinates, and second row contains y coordinates. There
 %               is a column for each joint, and the order of columns
-%               matches the specification given on pgaes 2 and 3 of the
+%               matches the specification given on pages 2 and 3 of the
 %               project description
 %    outputs: 
 %        skel_x, skel_y: Matrices that you can input to plot function to
@@ -49,7 +49,7 @@ skel_x(:,9) = [joints_2D(1,7),joints_2D(1,10)];
 skel_y(:,9) = [joints_2D(2,7),joints_2D(2,10)];
 %right shoulder to left shoulder
 skel_x(:,10) = [joints_2D(1,1),joints_2D(1,4)];
-skel_y(:,10) = [joints_2D(2,4),joints_2D(2,4)];
+skel_y(:,10) = [joints_2D(2,1),joints_2D(2,4)];
 %spine
 hip_midpt_x = (joints_2D(1,10) + joints_2D(1,7))/2;
 hip_midpt_y = (joints_2D(2,10) + joints_2D(2,7))/2;

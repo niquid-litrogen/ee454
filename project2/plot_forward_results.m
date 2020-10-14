@@ -4,7 +4,7 @@
 %Note that, in project description, we are allowed to ignore frames that do
 %not have values of all 1 in the confidence score. When inputting your own frame number, this demo may not work 
 %if you use a frame that does not contain data for all 12 joints. In a full demo, simply discard frames that do not have all joints.
-mocapFnum = 15000; %It is assumed that this frame contains data for all 12 joints
+mocapFnum = 21000; %It is assumed that this frame contains data for all 12 joints
 
 %Load data
 
@@ -23,6 +23,9 @@ load('data_files\Vue4CalibInfo.mat'); %contains 'vue4' structure
 %Extract 3D point data for test frame. "squeeze" removes the outer
 %dimension of size 1, leaving a 2D array.
 points_3D = squeeze(mocapJoints(mocapFnum,:,:));
+
+%figure 1 used to display forward results
+figure(1);
 
 subplot(1,2,1);
 
@@ -67,3 +70,24 @@ points_2D_vue4 = forward_project(points_3D,vue4);
 [skel_x2,skel_y2] = make_skeleton_2D(points_2D_vue4(1:2,:));
 plot(skel_x2,skel_y2,'-ro');
 title('vue4 forward projection');
+hold off
+
+%figure 2 used to display triangulation results
+figure(2);
+
+subplot(1,2,1);
+recovered_points_3D = triangulate_3D_points(vue2,vue4,points_2D_vue2,points_2D_vue4);
+[skel_x_est,skel_y_est,skel_z_est] = make_skeleton_3D(recovered_points_3D);
+plot3(skel_x_est,skel_y_est,skel_z_est,'-ro');
+title("recovered 3D joints");
+axis equal
+
+subplot(1,2,2);
+[skel_x_true,skel_y_true,skel_z_true] = make_skeleton_3D(points_3D);
+plot3(skel_x_true,skel_y_true,skel_z_true,'-bo','DisplayName','groundtruth 3D joints');
+title("groundtruth 3D joints");
+axis equal
+
+%check this in the workspace to eyeball differences between recovered and
+%true joints
+diffs = points_3D - recovered_points_3D;  
