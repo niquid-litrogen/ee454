@@ -42,3 +42,5 @@ for i = 1:1:num_frames
    end
 
 end
+
+save('joint_dist_info.mat', 'joint_dists');
