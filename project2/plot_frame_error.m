@@ -15,8 +15,14 @@ for i=1:data_size(1)
         frame_error(i) = error_sum; 
     end
 end
+[min_err, min_err_index] = min(frame_error(frame_error>0));
+[max_err, max_err_index] = max(frame_error);
+disp(['Frame # with minimum error: ' num2str(min_err_index)])
+disp(['Frame # with minimum error: ' num2str(max_err_index)])
 
 plot(frame_num, frame_error);
 title('Distance Error Per Frame');
 xlabel('Frame Number');
 ylabel('Sum of L^{2} Error');
+
+save('minmax_errors.mat', 'min_err', 'min_err_index', 'max_err', 'max_err_index');
