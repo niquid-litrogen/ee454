@@ -1,4 +1,14 @@
-load 'joint_dist_info.mat';
+function plot_frame_error(joint_dists)
+% For each frame, calculate the total error as distances between the
+% recovered and original joint points. Also finds the frames with the 
+% minimum and maximum error and plots the results per frame. 
+%
+% Inputs: 
+%       joint_dists: An Nx12 matrix containing the distances between
+%           recovered joint points and the original joint locations.
+% Outputs: 
+%       joint_dists: An Nx12 matrix containing the distances between
+%           recovered joint points and the original joint locations.
 
 data_size = size(joint_dists);
 
@@ -26,3 +36,4 @@ xlabel('Frame Number');
 ylabel('Sum of L^{2} Error');
 
 save('minmax_errors.mat', 'min_err', 'min_err_index', 'max_err', 'max_err_index');
+end

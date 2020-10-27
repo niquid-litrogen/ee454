@@ -1,13 +1,14 @@
 function intersections = get_pseudo_intersections(cam1_loc,view1_dirs,cam2_loc,view2_dirs)
-%Calculate 3D point that minimizes sum of squared distances to input
-%viewing rays.
-%inputs:
+% Calculate 3D point that minimizes sum of squared distances to input
+% viewing rays.
+% 
+% inputs:
 %    cam1_loc,cam2_loc: row vectors of camera location coordinates. These are the starting positions of viewing rays.
 %    view_1_dirs,view2_dirs: 2D arrays of shape (3,num samples). The columns of these arrays are unit vectors specifying viewing ray
 %                            directions. The columns in view1_dirs contain directions for rays starting from cam1_loc, and the 
 %                            columns of view2_dirs contain directions for rays starting from cam2_loc. Additionally, The vector at
 %                            column i of view1_dirs points to the same point as the vector in column i of view2_dirs.
-%outputs:
+% outputs:
 %    intersections: 2D array of shape (3,num samples). Each column contains the identified 3D intersection point between a set of input viewing
 %                   rays. Because viewing rays do not exactly intersect, the intersections are chosen as points that minimize the sum of squared 
 %                   distances to both viewing rays.

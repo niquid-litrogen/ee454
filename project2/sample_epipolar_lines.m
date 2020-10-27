@@ -1,10 +1,11 @@
 function [epipolar_line_x, epipolar_line_y] = sample_epipolar_lines(joint_2D, epipole)
-%Given two points on an epipolar line, returns x and y coordinates that can
-%be plotted.
-%inputs:
+% Given two points on an epipolar line, returns x and y coordinates that can
+% be plotted.
+%
+% Inputs:
 %    point_2D: 3x1 array, homogenous coordinates of a joint projected into a camera view.
 %    epipole: 3x1 array, epipole location in homogenous camera coordinates.
-%outputs:
+% Outputs:
 %    epipolar_line_x: array of x coordinates along epipolar line with input endpoints. 
 %    epiolar_line_y: array of y coordinates along epipolar line with input
 %                     endpoints.

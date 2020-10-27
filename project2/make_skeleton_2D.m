@@ -1,21 +1,21 @@
 function [skel_x,skel_y] = make_skeleton_2D(joints_2D)
-%This function creates x and y matrices that, when plotted, display 2D
-%points connected as a skeleton. It is assumed that the order of in input
-%joints_2D matches the order given in pages 2 and 3 of the project
-%description. Make sure that "joints_2D" only has x and y coordinates, and
-%not homogeneous coordinates.
-%
-%useful reference for plotting multiple line segments: 
+% This function creates x and y matrices that, when plotted, display 2D
+% points connected as a skeleton. It is assumed that the order of in input
+% joints_2D matches the order given in pages 2 and 3 of the project
+% description. Make sure that "joints_2D" only has x and y coordinates, and
+% not homogeneous coordinates.
+% 
+% useful reference for plotting multiple line segments: 
 %    https://www.mathworks.com/matlabcentral/answers/353653-how-to-draw-bunch-of-line-segments
-%inputs:
+% Inputs:
 %    joints_2D: numpy array of shape (2, 12). First row contains x
 %               coordinates, and second row contains y coordinates. There
 %               is a column for each joint, and the order of columns
 %               matches the specification given on pages 2 and 3 of the
 %               project description
-%    outputs: 
-%        skel_x, skel_y: Matrices that you can input to plot function to
-%                        plot skeleton.
+% Outputs: 
+%    skel_x, skel_y: Matrices that you can input to plot function to
+%               plot skeleton.
                             
 skel_x = zeros(2,11);
 skel_y = zeros(2,11);

@@ -1,10 +1,17 @@
 function metrics_matrix = generate_metrics(joint_dists)
-
-%This script creates an excel file with the distance metrics computed for
-%our given input data. A 5x13 table is generated using the "joint_dists"
-%variable generated using the 'joint_distance_metrics_3D.m' file. The 5
-%metrics are the mean, standard deviation, minimum, median and maximum
-%values.
+% Creates an excel file with the distance metrics computed for
+% our given input data. A 13x5 table is generated using the "joint_dists"
+% input variable. The 5 generated metrics are the mean, standard deviation, 
+% minimum, median and maximum values. The last row includes summary metrics
+% across all 12 of the joints.
+%
+% Inputs: 
+%       joint_dataset: An Nx12x4 matrix of joint locations in world
+%       coordinates for N frames.
+% Outputs: 
+%       metrics_matrix: A 13x5 matrix of the mean, standard deviation, min,
+%           median, and max metrics for the 12 joints. Additionally, the 
+%           last row presents combined metrics across all 12 joints. 
 
 data_size = size(joint_dists);
 for i=1:data_size(2)

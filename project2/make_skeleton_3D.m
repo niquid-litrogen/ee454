@@ -1,21 +1,21 @@
 function [skel_x,skel_y,skel_z] = make_skeleton_3D(joints_3D)
-%This function creates x, y, and z matrices that, when plotted, display 2D
-%points connected as a skeleton. It is assumed that the order of points in input
-%joints_3D matches the order given in pages 2 and 3 of the project
-%description. Make sure that "joints_3D" may have x,y,z or homogeneous coordinates.
-%
-%useful reference for plotting multiple line segments: 
+% This function creates x, y, and z matrices that, when plotted, display 2D
+% points connected as a skeleton. It is assumed that the order of points in input
+% joints_3D matches the order given in pages 2 and 3 of the project
+% description. Make sure that "joints_3D" may have x,y,z or homogeneous coordinates.
+% 
+% useful reference for plotting multiple line segments: 
 %    https://www.mathworks.com/matlabcentral/answers/353653-how-to-draw-bunch-of-line-segments
-%inputs:
+% inputs:
 %    joints_3D: numpy array of shape (12, 3). First column contains x
 %               coordinates, second column contains y coordinates, and 
 %               third column contains z coordinates. There
 %               is a row for each joint, and the order of rows
 %               matches the specification given on pages 2 and 3 of the
 %               project description
-%    outputs: 
-%        skel_x, skel_y, skel_z: Matrices that you can input to plot3 function to
-%                        plot skeleton.
+% outputs: 
+%    skel_x, skel_y, skel_z: Matrices that you can input to plot3 function to
+%               plot skeleton.
                             
 skel_x = zeros(2,11);
 skel_y = zeros(2,11);

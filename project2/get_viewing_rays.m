@@ -1,13 +1,14 @@
 function [cam_pos,view_directions] = get_viewing_rays(camera,points_2D)
-%Calculate viewing rays through projected points in the image plane of a
-%camera. Each viewing ray is parameterized by two outputs, the camera
-%position (in world coordinates) and a unit vector specifying ray direction.
-%inputs:
+% Calculate viewing rays through projected points in the image plane of a
+% camera. Each viewing ray is parameterized by two outputs, the camera
+% position (in world coordinates) and a unit vector specifying ray direction.
+%
+% Inputs:
 %    camera: structure containing camera parameters.
 %    points_2D: 2D matrix of shape (3, num samples). Each column of this matrix
 %               contains homogeneous coordinates for a 2D point in the
 %               camera's image plane. The last row should contain all 1s.
-%outputs:
+% Outputs:
 %    cam_pos: Position of camera, in world coordinates. This is the start
 %             point of each viewing ray.
 %    view_directions: 2D matrix of shape (3, num samples). Each column of this matrix
