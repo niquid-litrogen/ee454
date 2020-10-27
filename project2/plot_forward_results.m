@@ -4,7 +4,7 @@
 %Note that, in project description, we are allowed to ignore frames that do
 %not have values of all 1 in the confidence score. When inputting your own frame number, this demo may not work 
 %if you use a frame that does not contain data for all 12 joints. In a full demo, simply discard frames that do not have all joints.
-mocapFnum = 21000; %It is assumed that this frame contains data for all 12 joints
+mocapFnum = 24560; %It is assumed that this frame contains data for all 12 joints
 
 %Load data
 

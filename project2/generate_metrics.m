@@ -1,10 +1,10 @@
+function metrics_matrix = generate_metrics(joint_dists)
+
 %This script creates an excel file with the distance metrics computed for
 %our given input data. A 5x13 table is generated using the "joint_dists"
 %variable generated using the 'joint_distance_metrics_3D.m' file. The 5
 %metrics are the mean, standard deviation, minimum, median and maximum
 %values.
-
-load 'joint_dist_info.mat';
 
 data_size = size(joint_dists);
 for i=1:data_size(2)
@@ -23,16 +23,10 @@ min_vals(end_row) = min(min_vals);
 med_vals(end_row) = median(joint_dists(:), 'all', 'omitnan');
 max_vals(end_row) = max(max_vals);
 
-
-
 metrics_matrix(:, 1) = mean_vals;
 metrics_matrix(:, 2) = std_vals;
 metrics_matrix(:, 3) = min_vals;
 metrics_matrix(:, 4) = med_vals;
 metrics_matrix(:, 5) = max_vals;
-metrics_titles = ["Mean" "Std Dev" "Min" "Median" "Max"];
 
-filename = 'metrics_table.xlsx';
-writematrix(metrics_titles, filename, 'Range', 'A1');
-writematrix(metrics_matrix, filename, 'Range', 'A2');
-
+end

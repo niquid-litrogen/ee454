@@ -1,14 +1,9 @@
+function joint_dists = joint_distances(mocapJoints, vue2, vue4)
+
 %This script calculates distances between each pair of joints in each
 %frame. Distances are stored in 2D array "joint_dists", where each row is a
 %single frame and each column is a joint. joint_dists(i,j) is the distance
 %between recovered and original joint "j" in frame "i". 
-
-%In a future revision, distances need to be aggregated into metrics
-%(mean, max, standard deviation, etc.) and displayed.
-
-load('data_files\Subject4-Session3-Take4_mocapJoints.mat');
-load('data_files\Vue2CalibInfo.mat'); %contains 'vue2' structure
-load('data_files\Vue4CalibInfo.mat'); %contains 'vue4' structure
 
 num_frames = length(mocapJoints);
 
@@ -19,7 +14,7 @@ num_frames = length(mocapJoints);
 %with nans.
 joint_dists = NaN(num_frames, 12);
 
-for i = 1:1:num_frames
+for i = 1:num_frames
     points_3D = squeeze(mocapJoints(i,:,:));
     
     %only consider frames that have data for all 12 joints (meaning that
@@ -43,4 +38,4 @@ for i = 1:1:num_frames
 
 end
 
-save('joint_dist_info.mat', 'joint_dists');
+end
