@@ -10,22 +10,18 @@ function plot_frame_error(joint_dists)
 %       joint_dists: An Nx12 matrix containing the distances between
 %           recovered joint points and the original joint locations.
 
-data_size = size(joint_dists);
-
 %preallocating arrays
-frame_error = zeros(data_size(1),1);
-frame_num = frame_error;
+frame_error = zeros(size(joint_dists,1),1);
+frame_num = (1:size(joint_dists,1))';
 %iterate through each frame
-for i=1:data_size(1)
-    frame_num(i) = i;
+for i=1:size(joint_dists,1)
     error_sum = sum(joint_dists(i,:));
-    if(isnan(error_sum))
-        frame_error(i) = 0; %assume 0 error for non confident frames
-    else
-        frame_error(i) = error_sum; 
+    if(~isnan(error_sum))
+        frame_error(i) = error_sum; %assume 0 error for non confident frames
     end
 end
-[min_err, min_err_index] = min(frame_error(frame_error>0));
+min_err = min(frame_error(frame_error>0));
+min_err_index = find(frame_error == min_err);
 [max_err, max_err_index] = max(frame_error);
 disp(['Frame # with minimum error: ' num2str(min_err_index)])
 disp(['Frame # with minimum error: ' num2str(max_err_index)])
