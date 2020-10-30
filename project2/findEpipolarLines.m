@@ -15,7 +15,7 @@ function [EpipolarLines1, EpipolarLines2] = findEpipolarLines(worldCoord3DPoints
 %    the number of input points.
 
 %vector of shape (3,num_points) containing number of input points
-[~, num_points] = size(worldCoord3DPoints');
+[~, num_points] = size(cam1PixelCoords);
 
 
 %camera 1 in world coords as shape (3x1) vector, which is necessary for
