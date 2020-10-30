@@ -28,13 +28,13 @@ for i = 1:num_frames
     %only consider frames that have data for all 12 joints (meaning that
     %last column has confidence score of all ones)
     if (all(points_3D(:,4) == ones(12,1)))
-        points_2D_vue2 = forward_project(points_3D,vue2);
-        points_2D_vue4 = forward_project(points_3D,vue4);
+        points_2D_vue2 = project3DTo2D(vue2, points_3D);
+        points_2D_vue4 = project3DTo2D(vue4, points_3D);
         
-        recovered_points_3D = triangulate_3D_points(vue2,vue4,points_2D_vue2,points_2D_vue4);
+        recovered_points_3D = reconstruct3DFrom2D(vue2,points_2D_vue2,vue4,points_2D_vue4);
         %rows of "diffs" are the differences between true and recovered joint
         %locations
-        diffs = recovered_points_3D - points_3D;
+        diffs = recovered_points_3D - points_3D(:, 1:3);
         %calculate 2-norm of each row of diffs. This gets a 12*1 vector
         %containing the euclidean distance between each pair of true/recovered joint 
         %locations in the current frame. 
