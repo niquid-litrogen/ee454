@@ -4,7 +4,7 @@
 %Note that, in project description, we are allowed to ignore frames that do
 %not have values of all 1 in the confidence score. When inputting your own frame number, this demo may not work 
 %if you use a frame that does not contain data for all 12 joints. In a full demo, simply discard frames that do not have all joints.
-mocapFnum = 9500; %It is assumed that this frame contains data for all 12 joints
+mocapFnum = 1000; %It is assumed that this frame contains data for all 12 joints
 
 %use this to specify a color map for epipolar lines. 
 %This a 12*3 vector, where each row contains an RGB color specification.
@@ -32,10 +32,13 @@ load('data_files\Vue4CalibInfo.mat'); %contains 'vue4' structure
 %Extract 3D point data for test frame. "squeeze" removes the outer
 %dimension of size 1, leaving a 2D array.
 points_3D = squeeze(mocapJoints(mocapFnum,:,:));
+%Get 3D points in shape (3,num samples), which is required for the input to
+%the 2D projection function.
+projection_2D_input = points_3D(:,1:3)';
 %joint coordinates in vue2 image
-points_2D_left = forward_project(points_3D,vue2);
+points_2D_left = project3DTo2D(vue2,projection_2D_input);
 %joint coordinates in vue4 image
-points_2D_right = forward_project(points_3D,vue4);
+points_2D_right = project3DTo2D(vue4,projection_2D_input);
 
 
 %retrieve epipolar line equations
