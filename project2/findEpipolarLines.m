@@ -18,16 +18,17 @@ function [EpipolarLines1, EpipolarLines2] = findEpipolarLines(worldCoord3DPoints
 [~, num_points] = size(worldCoord3DPoints');
 
 
-%Homogenous world coordinates, which is necessary for
-%2D projection function
-cam1_homog = [cam1.position,1];
+%camera 1 in world coords as shape (3x1) vector, which is necessary for
+%projection function
+cam1_coords = cam1.position';
 %Get "left" epipole, the coordinates of cam1 in image plane of cam2
-cam1_2_epipole = forward_project(cam1_homog,cam2);
+cam1_2_epipole = project3DTo2D(cam2,cam1_coords);
 
-%Homogenous world coordinates
-cam2_homog = [cam2.position,1];
+%camera 1 in world coords as shape (3x1) vector, which is necessary for
+%projection function
+cam2_coords = cam2.position';
 %Get "right" epipole, the coordinates of cam2 in image plane of cam1
-cam2_1_epipole = forward_project(cam2_homog,cam1);
+cam2_1_epipole = project3DTo2D(cam1,cam2_coords);
 
 
 for i = 1:1:num_points
