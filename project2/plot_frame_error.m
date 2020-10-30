@@ -24,7 +24,7 @@ min_err = min(frame_error(frame_error>0));
 min_err_index = find(frame_error == min_err);
 [max_err, max_err_index] = max(frame_error);
 disp(['Frame # with minimum error: ' num2str(min_err_index)])
-disp(['Frame # with minimum error: ' num2str(max_err_index)])
+disp(['Frame # with maximum error: ' num2str(max_err_index)])
 
 plot(frame_num, frame_error);
 title('Distance Error Per Frame');
