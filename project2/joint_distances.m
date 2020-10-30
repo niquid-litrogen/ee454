@@ -23,22 +23,23 @@ num_frames = length(mocapJoints);
 joint_dists = NaN(num_frames, 12);
 
 for i = 1:num_frames
-    points_3D = squeeze(mocapJoints(i,:,:));
+    points_3D_int = squeeze(mocapJoints(i,:,:));
+    points_3D = (points_3D_int(:,1:3))';
     
     %only consider frames that have data for all 12 joints (meaning that
     %last column has confidence score of all ones)
-    if (all(points_3D(:,4) == ones(12,1)))
+    if (all(points_3D_int(:,4) == ones(12,1)))
         points_2D_vue2 = project3DTo2D(vue2, points_3D);
         points_2D_vue4 = project3DTo2D(vue4, points_3D);
         
         recovered_points_3D = reconstruct3DFrom2D(vue2,points_2D_vue2,vue4,points_2D_vue4);
         %rows of "diffs" are the differences between true and recovered joint
         %locations
-        diffs = recovered_points_3D - points_3D(:, 1:3);
+        diffs = recovered_points_3D - points_3D;
         %calculate 2-norm of each row of diffs. This gets a 12*1 vector
         %containing the euclidean distance between each pair of true/recovered joint 
         %locations in the current frame. 
-        dists = vecnorm(diffs,2,2);
+        dists = vecnorm(diffs',2,2);
         %store joint distance calculations in row of joint_dists that
         %corresponds to current frame
         joint_dists(i,:) = dists;
