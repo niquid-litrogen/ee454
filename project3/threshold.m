@@ -1,5 +1,5 @@
  function out_arr = threshold(in_arr, gamma)
-%Convert input array to binary based pixel threshold parameter.
+%Convert input array to binary based on pixel level threshold parameter.
 %inputs:
 %    in_arr: MxN input array. It is assumed that all values are positive.
 %    gamma: Positive scalar threshold. All values in "in_arr" < "gamma" are set to 0. All
