@@ -1,12 +1,13 @@
- function out_arr = apply_relu(in_arr, gamma)
-% Input: inarray is NxMxD array of floats
-%
-% Output: outarray is NxMxD array of floats
-%
-% Sets negative elements of inarray to 0 in outarray.
+ function out_arr = threshold(in_arr, gamma)
+%Convert input array to binary based off of threshold.
+%inputs:
+%    in_arr: MxN input array. It is assumed that all values are positive.
+%    gamma: Positive scalar threshold. All values in "in_arr" < "gamma" are set to 0. All
+%           values in "in_arr" >= gamma are set to 1.
 
 out_arr = in_arr;
 out_arr(out_arr < gamma) = 0;
+%All remaining nonzero elements are >= threshold, and are set to 1.
 out_arr(out_arr ~= 0) = 1;
 
 end
