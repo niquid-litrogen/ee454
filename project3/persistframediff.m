@@ -1,17 +1,18 @@
 function [B1, outimg] = persistframediff(B0, frame, abs_diff_threshold, gamma, H)
 %Perform one iteration of persistent frame differencing motion detection algorithm.
 %Inputs:
-%    B0: MxN reference background frame for current iteration. This must be grayscale, with
+%    B0: double MxN reference background frame for current iteration. This must be grayscale, with
 %        values ranging from 0 to 255.
-%    frame: MxN input frame to modify. This must be grayscale, with values ranging from 0 to 255.
-%    abs_diff_threshold: Positive scalar specifying the difference threshold for motion detection.
-%    gamma: Scalar linear decay parameter, which controls how quickly detected
+%    frame: double MxN input frame to modify. This must be grayscale, with values ranging from 0 to 255.
+%    abs_diff_threshold: Positive scalar, between 0 and 255, specifying the difference 
+%                        threshold for motion detection.
+%    gamma: Scalar linear decay parameter, between 0 and 255, which controls how quickly detected
 %           motion fades away.
-%    H: MxN grayscale output image from previous iteration. 
+%    H: double MxN grayscale output image from previous iteration. 
 %Outputs:
-%    B1: MxN grayscale image. This is the reference background to be used in next iteration, which is the
+%    B1: double MxN grayscale image. This is the reference background to be used in next iteration, which is the
 %        same as input frame in current iteration.
-%    outimg: MxN grayscale image. This is the output of current iteration, and the "H" input for next 
+%    outimg: double MxN grayscale image. This is the output of current iteration, and the "H" input for next 
 %            iteration. Note that values in this image range from 0 to 255, not 0 to 1.
     diff = abs(B0 - frame);
     %Detect motion in current frame. Note that the "threshold" operation
