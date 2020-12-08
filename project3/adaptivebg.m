@@ -15,9 +15,12 @@ function [B1, outimg] = adaptivebg(B0, frame, alpha, abs_diff_threshold)
 %        convex combination of inputs "B0" and "frame".
 %    outimg: MxN binary image. A pixel with a value of '1' indicates
 %            detected motion.
+
     diff = abs(B0 - frame);
+    
     %convert diff to binary image
     outimg = threshold(diff, abs_diff_threshold);
+    
     %blend current image with current background to make background for next iteration
     B1 = (alpha*frame) + (1-alpha)*B0;
 end

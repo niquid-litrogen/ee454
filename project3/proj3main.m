@@ -28,19 +28,22 @@ function proj3main(dirstring, maxframenum, abs_diff_threshold, alpha_parameter, 
 picname = 'f0001.jpg'; %inital filename for input video
 imloc = [dirstring '/' picname];
 B0 = imread(imloc);
+
 %Convert to double and extract green channel. "double" is used as
 %a standard array type for math operations.
 B0 = double(B0(:, :, 3)); %green channel
 
 %Initialize BG frames for each function
-bgB0 = B0; %background frame for background subtraction
-framediffB0 = B0; %background frame for frame differencing
-adapB0 = B0; %background frame for adaptive background subtraction
-persistB0 = B0; %background frame for persistent frame differencing
+bgB0 = B0;          %background frame for background subtraction
+framediffB0 = B0;   %background frame for frame differencing
+adapB0 = B0;        %background frame for adaptive background subtraction
+persistB0 = B0;     %background frame for persistent frame differencing
 p_framediff_out = 0; %initial "H" input for persistent frame differencing
+
 %write initial output frame
 outname = ['out' num2str(1, '%04.f') '.jpg'];
 outloc = ['output_images' '/' outname];
+
 %Because the first input frame IS the initial background, write out the 
 %first output frame as all 0s (entirely black) for no detected motion.
 out_init = zeros(size(B0));
